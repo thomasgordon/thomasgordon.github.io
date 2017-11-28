@@ -9,5 +9,7 @@ body {
 }
 h4{
     color: Black;
-    text-decoration: italics
+    text-decoration: italics;
+    font-size: 2em;
 }
+
