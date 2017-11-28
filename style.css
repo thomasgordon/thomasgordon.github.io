@@ -2,7 +2,8 @@ h1 {
     color: red;
     font-size: 3em;
     text-decoration: underline;
+    background-colour: rgb(21, 216, 216);
     }
 body {
-     background-color: rgb(255, 0, 255);
+     background-color: rgb(0, 216, 216);
 }
