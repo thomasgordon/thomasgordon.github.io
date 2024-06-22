@@ -200,7 +200,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <strong>clear</strong> - Clear the console<br>
             <strong>theme [theme]</strong> - Change terminal theme<br>
             <strong>theme -list</strong> - List all available themes<br>
-            <strong>~</strong> - Go to the home directory<br>
             <strong>-help</strong> - Show this help message
         `;
     }
