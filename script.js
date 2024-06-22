@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(data => {
                     createOutputLine('nvim', `
                         <div class="nvim-header">NVIM - ${filePath}</div>
-                        <div class="nvim-content">${escapeHtml(data)}</div>
+                        <div class="nvim-content">${data}</div>
                     `);
                     scrollToBottom();
                 })
@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return `zsh: file not found: ${file}. Use '--help' for more information.`;
         }
     }
+    
 
     function clearConsole() {
         output.innerHTML = '';
