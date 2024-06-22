@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 500);
 
     function fetchProjects() {
-        fetch('thomasgordon.github.io/projects/')
+        fetch('./thomasgordon.github.io/projects/')
             .then(response => response.text())
             .then(data => {
                 const parser = new DOMParser();
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function fetchThemes() {
-        fetch('thomasgordon.github.io/themes/')
+        fetch('./thomasgordon.github.io/themes/')
             .then(response => response.text())
             .then(data => {
                 const parser = new DOMParser();
