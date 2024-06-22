@@ -1,14 +1,14 @@
 body {
     margin: 0;
     font-family: 'Courier New', Courier, monospace;
-    background-color: #1d1f21;
-    color: #c5c8c6;
+    background-color: #282c34;
+    color: #abb2bf;
 }
 
 #terminal {
     width: 80%;
     margin: 50px auto;
-    background-color: #1d1f21;
+    background-color: #282c34;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -19,7 +19,7 @@ body {
 }
 
 .command {
-    color: #81a2be;
+    color: #e06c75;
 }
 
 .response {
@@ -33,13 +33,14 @@ body {
 
 .prompt {
     margin-right: 10px;
+    color: #e06c75;
 }
 
 #input {
     background-color: transparent;
     border: none;
     outline: none;
-    color: #c5c8c6;
+    color: #abb2bf;
     font-family: inherit;
     font-size: 16px;
     width: 100%;
@@ -49,7 +50,7 @@ body {
 #input::after {
     content: '|';
     animation: blink 1s step-start infinite;
-    color: #c5c8c6;
+    color: #abb2bf;
     position: absolute;
     margin-left: -10px;
 }
@@ -62,14 +63,14 @@ body {
 
 .nvim {
     margin-top: 20px;
-    background-color: #282a36;
-    color: #f8f8f2;
+    background-color: #3e4451;
+    color: #abb2bf;
     padding: 10px;
     border-radius: 5px;
 }
 
 .nvim-header {
-    background-color: #44475a;
+    background-color: #4b5263;
     padding: 5px;
     font-weight: bold;
 }
