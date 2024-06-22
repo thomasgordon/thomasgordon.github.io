@@ -36,6 +36,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 fileSystem['/projects'] = files;
             })
             .catch(error => console.error('Error fetching projects:', error));
+
+            console.log(fileSystem);
+            console.log(files);
     }
 
     function fetchThemes() {
