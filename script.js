@@ -17,8 +17,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     input.addEventListener('keydown', handleInput);
 
+    // Add blinking cursor
+    setInterval(() => {
+        if (input.style.caretColor === 'transparent') {
+            input.style.caretColor = '#c5c8c6';
+        } else {
+            input.style.caretColor = 'transparent';
+        }
+    }, 500);
+
     function fetchProjects() {
-        fetch('/projects')
+        fetch('./projects/')
             .then(response => response.text())
             .then(data => {
                 const parser = new DOMParser();
@@ -29,16 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.error('Error fetching projects:', error));
     }
 
-    setInterval(() => {
-        if (input.style.caretColor === 'transparent') {
-            input.style.caretColor = '#c5c8c6';
-        } else {
-            input.style.caretColor = 'transparent';
-        }
-    }, 500);
-
     function fetchThemes() {
-        fetch('/themes')
+        fetch('./themes/')
             .then(response => response.text())
             .then(data => {
                 const parser = new DOMParser();
@@ -72,6 +73,9 @@ document.addEventListener('DOMContentLoaded', function() {
         else if (command.startsWith('nvim ')) {
             responseText = openFile(command.split(' ')[1]);
         }
+        else if (command === 'clear') {
+            responseText = clearConsole();
+        }
         else if (command === '--help') {
             responseText = getHelpText();
         }
@@ -85,9 +89,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         else if (command === '~') {
             responseText = changeDirectory('/');
-        }
-        else if (command === 'clear') {
-            responseText = clearConsole();
         }
         else {
             responseText = `zsh: command not found: ${command}. Use '--help' for more information.`;
@@ -131,14 +132,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function openFile(file) {
-        const filePath = currentDirectory === '/' ? `/${file}` : `${currentDirectory}/${file}`;
+        const filePath = currentDirectory === '/' ? `./${file}` : `./${currentDirectory}/${file}`;
         if (fileSystem[currentDirectory].includes(file)) {
             fetch(filePath)
                 .then(response => response.text())
                 .then(data => {
                     createOutputLine('nvim', `
                         <div class="nvim-header">NVIM - ${filePath}</div>
-                        <div class="nvim-content">${data}</div>
+                        <div class="nvim-content">${escapeHtml(data)}</div>
                     `);
                     scrollToBottom();
                 })
@@ -147,6 +148,11 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             return `zsh: file not found: ${file}. Use '--help' for more information.`;
         }
+    }
+
+    function clearConsole() {
+        output.innerHTML = '';
+        return '';
     }
 
     function escapeHtml(unsafe) {
@@ -232,11 +238,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function scrollToBottom() {
         output.scrollTop = output.scrollHeight;
-    }
-
-
-    function clearConsole() {
-        output.innerHTML = '';
-        return '';
     }
 });
