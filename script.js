@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 500);
 
     function fetchProjects() {
-        fetch('./thomasgordon.github.io/projects/')
+        fetch('/projects/')
             .then(response => response.text())
             .then(data => {
                 const parser = new DOMParser();
@@ -36,12 +36,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 fileSystem['/projects'] = files;
             })
             .catch(error => console.error('Error fetching projects:', error));
-
-            console.log(fileSystem['/projects']);
     }
-
+    
     function fetchThemes() {
-        fetch('./thomasgordon.github.io/themes/')
+        fetch('/themes/')
             .then(response => response.text())
             .then(data => {
                 const parser = new DOMParser();
@@ -50,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => console.error('Error fetching themes:', error));
     }
-
+    
     function handleInput(event) {
         if (event.key === 'Enter') {
             const command = input.value.trim();
