@@ -11,13 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let autocompleteIndex = -1;
     let autocompleteList = [];
 
-    // Fetch the list of projects and themes dynamically
     fetchProjects();
     fetchThemes();
 
     input.addEventListener('keydown', handleInput);
 
-    // Add blinking cursor
     setInterval(() => {
         if (input.style.caretColor === 'transparent') {
             input.style.caretColor = '#c5c8c6';
@@ -76,12 +74,12 @@ document.addEventListener('DOMContentLoaded', function() {
         else if (command === 'clear') {
             responseText = clearConsole();
         }
-        else if (command === '--help') {
+        else if (command === '-help') {
             responseText = getHelpText();
         }
         else if (command.startsWith('theme ')) {
             const subcommand = command.split(' ')[1];
-            if (subcommand === '--list') {
+            if (subcommand === '-list') {
                 responseText = listThemes();
             } else {
                 responseText = changeTheme(subcommand);
@@ -91,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
             responseText = changeDirectory('/');
         }
         else {
-            responseText = `zsh: command not found: ${command}. Use '--help' for more information.`;
+            responseText = `zsh: command not found: ${command}. Use '-help' for more information.`;
         }
 
         createOutputLine('response', responseText);
@@ -126,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentDirectory = newPath;
                 return `Changed directory to ${currentDirectory}`;
             } else {
-                return `zsh: command not found: cd ${dir}. Use '--help' for more information.`;
+                return `zsh: command not found: cd ${dir}. Use '-help' for more information.`;
             }
         }
     }
@@ -146,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 .catch(error => console.error('Error opening file:', error));
             return '';
         } else {
-            return `zsh: file not found: ${file}. Use '--help' for more information.`;
+            return `zsh: file not found: ${file}. Use '-help' for more information.`;
         }
     }
     
@@ -201,9 +199,9 @@ document.addEventListener('DOMContentLoaded', function() {
             <strong>nvim [file]</strong> - Open file in terminal<br>
             <strong>clear</strong> - Clear the console<br>
             <strong>theme [theme]</strong> - Change terminal theme<br>
-            <strong>theme --list</strong> - List all available themes<br>
+            <strong>theme -list</strong> - List all available themes<br>
             <strong>~</strong> - Go to the home directory<br>
-            <strong>--help</strong> - Show this help message
+            <strong>-help</strong> - Show this help message
         `;
     }
 
@@ -222,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (base === 'theme') {
             possibilities = themes.map(t => t.split('/').pop().replace('.css', '')).filter(theme => theme.startsWith(partial));
         } else if (!base) {
-            possibilities = ['ls', 'cd ', 'nvim ', 'theme ', '--help'].filter(cmd => cmd.startsWith(partial));
+            possibilities = ['ls', 'cd ', 'nvim ', 'theme ', '-help'].filter(cmd => cmd.startsWith(partial));
         }
 
         if (possibilities.length > 0) {
