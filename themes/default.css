@@ -5,6 +5,21 @@ body {
     color: #c5c8c6;
 }
 
+h1 {
+    color: #f8f8f2;
+}
+
+a {
+    color: #81a2be;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #b5bd68;
+    text-decoration: underline;
+}
+
 #terminal {
     width: 80%;
     margin: 50px auto;
@@ -46,19 +61,6 @@ body {
     caret-color: transparent;
 }
 
-#input::after {
-    content: '|';
-    animation: blink 1s step-start infinite;
-    color: #c5c8c6;
-    position: absolute;
-    margin-left: -10px;
-}
-
-@keyframes blink {
-    50% {
-        opacity: 0;
-    }
-}
 
 .nvim {
     margin-top: 20px;

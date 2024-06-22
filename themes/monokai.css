@@ -5,6 +5,21 @@ body {
     color: #f8f8f2;
 }
 
+h1 {
+    color: #66d9ef;
+}
+
+a {
+    color: #a6e22e;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #f92672;
+    text-decoration: underline;
+}
+
 #terminal {
     width: 80%;
     margin: 50px auto;
