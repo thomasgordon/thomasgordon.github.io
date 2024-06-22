@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const input = document.getElementById('input');
     const output = document.getElementById('output');
     const themeLink = document.getElementById('theme-link');
     let currentDirectory = '/';
-    let fileSystem = {
+    const fileSystem = {
         '/': ['projects', 'education.html', 'contact.html'],
         '/projects': []
     };
@@ -17,11 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     input.addEventListener('keydown', handleInput);
 
     setInterval(() => {
-        if (input.style.caretColor === 'transparent') {
-            input.style.caretColor = '#c5c8c6';
-        } else {
-            input.style.caretColor = 'transparent';
-        }
+        input.style.caretColor = input.style.caretColor === 'transparent' ? '#c5c8c6' : 'transparent';
     }, 500);
 
     function fetchProjects() {
@@ -30,23 +26,27 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(data, 'text/html');
-                const files = [...doc.querySelectorAll('a')].map(a => a.href.split('/').pop()).filter(file => file.endsWith('.html'));
+                const files = [...doc.querySelectorAll('a')]
+                    .map(a => a.href.split('/').pop())
+                    .filter(file => file.endsWith('.html'));
                 fileSystem['/projects'] = files;
             })
             .catch(error => console.error('Error fetching projects:', error));
     }
-    
+
     function fetchThemes() {
         fetch('/themes/')
             .then(response => response.text())
             .then(data => {
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(data, 'text/html');
-                themes = [...doc.querySelectorAll('a')].map(a => `themes/${a.href.split('/').pop()}`).filter(file => file.endsWith('.css'));
+                themes = [...doc.querySelectorAll('a')]
+                    .map(a => `themes/${a.href.split('/').pop()}`)
+                    .filter(file => file.endsWith('.css'));
             })
             .catch(error => console.error('Error fetching themes:', error));
     }
-    
+
     function handleInput(event) {
         if (event.key === 'Enter') {
             const command = input.value.trim();
@@ -62,34 +62,40 @@ document.addEventListener('DOMContentLoaded', function() {
     function executeCommand(command) {
         let responseText = '';
 
-        if (command === 'ls' || command === 'ls -a' || command === 'ls -l' || command === 'ls -la' || command === 'ls -ll' || command === 'la') {
-            responseText = listDirectoryContents();
-        }
-        else if (command.startsWith('cd ')) {
-            responseText = changeDirectory(command.split(' ')[1]);
-        }
-        else if (command.startsWith('nvim ')) {
-            responseText = openFile(command.split(' ')[1]);
-        }
-        else if (command === 'clear') {
-            responseText = clearConsole();
-        }
-        else if (command === '-help') {
-            responseText = getHelpText();
-        }
-        else if (command.startsWith('theme ')) {
-            const subcommand = command.split(' ')[1];
-            if (subcommand === '-list') {
-                responseText = listThemes();
-            } else {
-                responseText = changeTheme(subcommand);
-            }
-        }
-        else if (command === '~') {
-            responseText = changeDirectory('/');
-        }
-        else {
-            responseText = `zsh: command not found: ${command}. Use '-help' for more information.`;
+        const [baseCommand, ...args] = command.split(' ');
+        const arg = args.join(' ');
+
+        switch (baseCommand) {
+            case 'ls':
+            case 'la':
+            case 'll':
+            case 'l':
+            case 'ls -a':
+            case 'ls -l':
+            case 'ls -la':
+            case 'ls -ll':
+                responseText = listDirectoryContents();
+                break;
+            case 'cd':
+                responseText = changeDirectory(arg);
+                break;
+            case 'nvim':
+                responseText = openFile(arg);
+                break;
+            case 'clear':
+                responseText = clearConsole();
+                break;
+            case '-help':
+                responseText = getHelpText();
+                break;
+            case 'theme':
+                responseText = arg === '-list' ? listThemes() : changeTheme(arg);
+                break;
+            case '~':
+                responseText = changeDirectory('/');
+                break;
+            default:
+                responseText = `zsh: command not found: ${command}. Use '-help' for more information.`;
         }
 
         createOutputLine('response', responseText);
@@ -101,14 +107,12 @@ document.addEventListener('DOMContentLoaded', function() {
         line.className = className;
         line.innerHTML = text;
         output.appendChild(line);
-        return line;
     }
 
     function listDirectoryContents() {
         return `.<br>..` + fileSystem[currentDirectory].map(item => {
             const isDirectory = !item.includes('.html');
-            const icon = isDirectory ? '📁' : '📄 ';
-            return `<br>${icon} ${item}`;
+            return `<br>${isDirectory ? '📁' : '📄'} ${item}`;
         }).join('');
     }
 
@@ -117,16 +121,15 @@ document.addEventListener('DOMContentLoaded', function() {
             if (currentDirectory !== '/') {
                 currentDirectory = currentDirectory.split('/').slice(0, -1).join('/') || '/';
             }
-            return `Changed directory to ${currentDirectory}`;
         } else {
             const newPath = currentDirectory === '/' ? `/${dir}` : `${currentDirectory}/${dir}`;
             if (fileSystem[newPath]) {
                 currentDirectory = newPath;
-                return `Changed directory to ${currentDirectory}`;
             } else {
                 return `zsh: command not found: cd ${dir}. Use '-help' for more information.`;
             }
         }
+        return `Changed directory to ${currentDirectory}`;
     }
 
     function openFile(file) {
@@ -147,30 +150,10 @@ document.addEventListener('DOMContentLoaded', function() {
             return `zsh: file not found: ${file}. Use '-help' for more information.`;
         }
     }
-    
 
     function clearConsole() {
         output.innerHTML = '';
         return '';
-    }
-
-    function escapeHtml(unsafe) {
-        return unsafe.replace(/[&<"']/g, function (m) {
-            switch (m) {
-                case '&':
-                    return '&amp;';
-                case '<':
-                    return '&lt;';
-                case '>':
-                    return '&gt;';
-                case '"':
-                    return '&quot;';
-                case "'":
-                    return '&#039;';
-                default:
-                    return m;
-            }
-        });
     }
 
     function changeTheme(theme) {
@@ -206,23 +189,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function autocompleteCommand() {
         const command = input.value.trim();
-        const parts = command.split(' ');
-        const base = parts[0];
-        const partial = parts[1] || '';
+        const [base, partial = ''] = command.split(' ');
 
         let possibilities = [];
-        if (base === 'cd') {
-            const currentDirContents = currentDirectory === '/' ? fileSystem['/'] : fileSystem[currentDirectory] || [];
-            possibilities = currentDirContents.filter(item => !item.includes('.html') && item.startsWith(partial));
-        } else if (base === 'nvim') {
-            possibilities = fileSystem[currentDirectory].filter(file => file.startsWith(partial));
-        } else if (base === 'theme') {
-            possibilities = themes.map(t => t.split('/').pop().replace('.css', '')).filter(theme => theme.startsWith(partial));
-        } else if (!base) {
-            possibilities = ['ls', 'cd ', 'nvim ', 'theme ', '-help'].filter(cmd => cmd.startsWith(partial));
+        switch (base) {
+            case 'cd':
+                const currentDirContents = currentDirectory === '/' ? fileSystem['/'] : fileSystem[currentDirectory] || [];
+                possibilities = currentDirContents.filter(item => !item.includes('.html') && item.startsWith(partial));
+                break;
+            case 'nvim':
+                possibilities = fileSystem[currentDirectory].filter(file => file.startsWith(partial));
+                break;
+            case 'theme':
+                possibilities = themes.map(t => t.split('/').pop().replace('.css', '')).filter(theme => theme.startsWith(partial));
+                break;
+            default:
+                possibilities = ['ls', 'cd ', 'nvim ', 'theme ', '-help'].filter(cmd => cmd.startsWith(partial));
         }
 
-        if (possibilities.length > 0) {
+        if (possibilities.length) {
             autocompleteList = possibilities;
             autocompleteIndex = (autocompleteIndex + 1) % autocompleteList.length;
             input.value = `${base} ${autocompleteList[autocompleteIndex]}`.trim();
