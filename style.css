@@ -3,7 +3,7 @@
 :root {
   --bg-color: #121212;
   --text-color: #faf2dd;
-  --accent-color: 	#e981a4;
+  --accent-color: #e981a4;
   --secondary-color: #333333;
   --grid-color: rgba(255, 255, 255, 0.05);
 }
@@ -116,20 +116,18 @@ nav ul li a:hover {
 
 .home-content,
 .skills-content {
-  max-width: 600px;
-  text-align: center;
+  max-width: 100%;
+  margin-bottom: 2rem;
 }
 
 h1,
 h2 {
-  font-size: 4rem;
-  margin-bottom: 20px;
-  text-align: center;
+  font-size: 2.5rem;
 }
 
 .animation {
   overflow: hidden;
-  white-space: nowrap;
+  white-space: normal;
   margin: 0;
   letter-spacing: 0.15em;
   display: inline-block;
@@ -139,6 +137,7 @@ h2 {
 .animation::after {
   content: "|";
   position: absolute;
+  white-space: normal;
   right: -5px;
   animation: blink 0.7s infinite;
   color: var(--accent-color);
@@ -379,52 +378,6 @@ a:hover {
   scrollbar-color: var(--secondary-color) var(--bg-color);
 }
 
-@media (max-width: 768px) {
-  #main {
-    grid-template-columns: 1fr;
-  }
-
-  #home,
-  #skills,
-  #projects,
-  #contact {
-    padding: 50px 5%;
-  }
-
-  .home-content,
-  .skills-content {
-    max-width: 100%;
-    margin-bottom: 2rem;
-  }
-
-  .animation-container {
-    width: 200px;
-    height: 200px;
-  }
-
-  .skills-content__container {
-    padding: 0 20px;
-  }
-
-  header {
-    flex-direction: column;
-    padding: 10px 0;
-  }
-
-  .logo {
-    margin-bottom: 10px;
-  }
-
-  nav ul {
-    margin-right: 0;
-  }
-
-  nav ul li {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-}
-
 .education-content {
   max-width: 800px;
   text-align: left;
@@ -475,4 +428,73 @@ a:hover {
   display: inline-block;
   width: 1em;
   margin-left: -1em;
+}
+
+@media (max-width: 768px) {
+  #main {
+    grid-template-columns: 1fr;
+  }
+
+  #home,
+  #skills,
+  #projects,
+  #contact,
+  #education {
+    padding: 50px 5%;
+  }
+
+  .home-content,
+  .skills-content {
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  h1,
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  .animation {
+    font-size: 1rem;
+    white-space: normal;
+    line-height: 1.4;
+  }
+
+  .animation-container {
+    width: 200px;
+    height: 200px;
+  }
+
+  .skills-content__container {
+    padding: 0 20px;
+  }
+
+  header {
+    flex-direction: column;
+    padding: 10px 0;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  nav ul {
+    margin-right: 0;
+  }
+
+  nav ul li {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1,
+  h2 {
+    font-size: 2rem;
+  }
+
+  .animation {
+    font-size: 0.9rem;
+  }
 }
