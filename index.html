@@ -2,16 +2,100 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height">
-    <title>Portfolio Terminal</title>
-    <link rel="stylesheet" href="style.css" id="theme-link">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tom Gordon Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="terminal">
-        <div id="output"></div>
-        <div id="input-line">
-            <span class="prompt">></span>
-            <input type="text" id="input" autofocus>
+    <div class="background-grid"></div>
+    <div class="content-wrapper">
+        <div id="main">
+            <header>
+                <div class="logo">[ Tom Gordon ]</div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <section id="home">
+                <div class="home-content">
+                    <h2>Software Engineer</h2>
+                    <div class="animation">
+                        <span id="typing"></span>
+                    </div>
+                </div>
+                <div class="animation-container">
+                    <div class="animation-element"></div>
+                </div>
+            </section>
+
+            <section id="skills">
+                <h2>Skills</h2>
+                <div class="skills-content">
+                    <p class="skills-content__text">I'm proficient in</p>
+                    <div class="skills-content__container">
+                        <ul class="skills-content__container__list">
+                            <li class="skills-content__container__list__item">Python</li>
+                            <li class="skills-content__container__list__item">OOP</li>
+                            <li class="skills-content__container__list__item">Dart</li>
+                            <li class="skills-content__container__list__item">Linux</li>
+                            <li class="skills-content__container__list__item">CNN Design</li>
+                            <li class="skills-content__container__list__item">Tensorflow</li>
+                            <li class="skills-content__container__list__item">Git</li>
+                            <li class="skills-content__container__list__item">JavaScript</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education">
+                <h2>Education</h2>
+                <div class="education-content">
+                    <h3>BSc Computer Science</h3>
+                    <h4>University Of Portsmouth</h4>
+                    <p class="education-date">2020 - 2024</p>
+                    <ul>
+                        <li>Achieved an average of 83% in first year and 69% in second year.</li>
+                        <li>Modules include:
+                            <ul>
+                                <li>Programming (97%)</li>
+                                <li>Artificial Intelligence (82%)</li>
+                                <li>Database Systems Development (70%)</li>
+                            </ul>
+                        </li>
+                        <li>Demonstrated a strong aptitude for learning new languages and applying them quickly.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="projects">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+                    <a href="https://tatyou.app" class="project-card-link">
+                        <div class="project-card">
+                            <h3>TATYOU</h3>
+                            <p>An application I am currently developing in Dart that allows users to find new tattoo artists, preview tattoo designs in real-time using AR and book appointments with tattoo artists.</p>
+                        </div>
+                    </a>
+                    <div class="project-card">
+                        <h3>SPS</h3>
+                        <p>A web application allowing users to host a virtual 'party' on spotify (developed prior to spotify implementing this feature). Written using JavaScript, SQL and PHP, I used the Spotofy API (alongside creating a RESTful API) to allow users to add songs to the a queue, ote to skip songs and ciew the current queue, alongside seeing what was currently playing.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2>Contact</h2>
+                <p>Email: <a href="mailto:tomandrewgordon@gmail.com">tomandrewgordon@gmail.com</a></p>
+                <p><a href="https://github.com/thomasgordon">GitHub</a></p>
+                <p><a href="https://www.linkedin.com/in/thomasagordon/">LinkedIn</a></p>
+            </section>
         </div>
     </div>
     <script src="script.js"></script>
