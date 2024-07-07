@@ -1,6 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
     const scrollContainer = document.querySelector('.scroll-container');
 
+    updateElementWidth();
+
+    function updateElementWidth() {
+        const element = document.querySelector('.dynamic-width-element');
+        if (element) {
+            const textWidth = element.scrollWidth;
+            element.style.width = `${textWidth}px`;
+        }
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -34,3 +44,5 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScrollTop = st <= 0 ? 0 : st;
     }, false);
 });
+
+window.addEventListener('resize', updateElementWidth);
