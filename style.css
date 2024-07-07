@@ -259,11 +259,11 @@ h2 {
 
 @media (max-width: 768px) {
     header {
-        padding: 40px 20px;
+        padding: 40px 5px;
     }
 
     main {
-        padding: 0 20px;
+        padding: 0 5px;
     }
 
     h1 {
@@ -289,6 +289,6 @@ h2 {
     }
 
     .skills {
-        margin-top: 40px;
+        margin-top: 20px;
     }
 }
