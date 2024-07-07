@@ -7,10 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="background-grid"></div>
+    <div class="background-grid">
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.8.9/build/spline-viewer.js"></script>
+        <spline-viewer url="https://prod.spline.design/gdcJwq86KBTSgN3A/scene.splinecode"></spline-viewer>
+    </div>
     <div class="scroll-container">
         <header>
-            <div class="header-content">
+            <div class="spacer-title"></div>
+            <div class="header-content glass-effect">
                 <div class="name-title">
                     <h1><span class="first-name">Thomas</span> <strong>Gordon</strong></h1>
                     <p>[ software engineer ]</p>
@@ -22,7 +26,7 @@
             <section id="experience">
                 <h2>Experience</h2>
                 <div class="experience-container">
-                    <div class="timeline">
+                    <div class="timeline glass-effect">
                         <div class="timeline-item">
                             <div class="date">2023-2024</div>
                             <div class="institution">University Of Portsmouth</div>
@@ -36,7 +40,7 @@
                             <div class="institution">University Of Portsmouth</div>
                         </div>
                     </div>
-                    <div class="skills">
+                    <div class="skills glass-effect">
                         <div class="skill">
                             <span>Python</span>
                             <div class="slider" style="--value:90%"></div>
@@ -69,12 +73,12 @@
                 <h2>Projects</h2>
                 <div class="projects-grid">
                     <a href="https://tatyou.app" class="project-card-link">
-                        <div class="project-card">
+                        <div class="project-card glass-effect">
                             <h3>TATYOU</h3>
                             <p>An application I am currently developing in Dart that allows users to find new tattoo artists, preview tattoo designs in real-time using AR and book appointments with tattoo artists.</p>
                         </div>
                     </a>
-                    <div class="project-card">
+                    <div class="project-card glass-effect">
                         <h3>SPS</h3>
                         <p>A web application allowing users to host a virtual 'party' via the Spotify API (developed prior to Spotify implementing this feature). Written using JavaScript, SQL and PHP (alongside creating a RESTful API) to allow users to add songs to a queue, vote to skip songs and view the current queue, alongside seeing what was currently playing.</p>
                     </div>
@@ -83,7 +87,7 @@
 
             <section id="contact">
                 <h2>Contact</h2>
-                <div class="contact-links">
+                <div class="contact-links glass-effect">
                     <a href="https://github.com/thomasgordon">GitHub</a>
                     <a href="https://www.linkedin.com/in/thomasagordon/">LinkedIn</a>
                     <a href="mailto:tom@tatyou.app">Email</a>
