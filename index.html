@@ -3,74 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tom Gordon Portfolio</title>
+    <title>Thomas Gordon Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="background-grid"></div>
-    <div class="content-wrapper">
-        <div id="main">
-            <header>
-                <div class="logo">[ Tom Gordon ]</div>
-                <nav>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#education">Education</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-            </header>
+    <div class="scroll-container">
+        <header>
+            <div class="header-content">
+                <div class="name-title">
+                    <h1><span class="first-name">Thomas</span> <strong>Gordon</strong></h1>
+                    <p>[ software engineer ]</p>
+                </div>
+            </div>
+        </header>
 
-            <section id="home">
-                <div class="home-content">
-                    <h2>Software Engineer</h2>
-                    <div class="animation">
-                        <span id="typing"></span>
+        <main>
+            <section id="experience">
+                <h2>Experience</h2>
+                <div class="experience-container">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="date">2023-2024</div>
+                            <div class="institution">University Of Portsmouth</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="date">2022-2023</div>
+                            <div class="institution">Hewlett Packard Enterprise</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="date">2020-2022</div>
+                            <div class="institution">University Of Portsmouth</div>
+                        </div>
                     </div>
-                </div>
-                <div class="animation-container">
-                    <div class="animation-element"></div>
-                </div>
-            </section>
-
-            <section id="skills">
-                <h2>Skills</h2>
-                <div class="skills-content">
-                    <p class="skills-content__text">I'm proficient in</p>
-                    <div class="skills-content__container">
-                        <ul class="skills-content__container__list">
-                            <li class="skills-content__container__list__item">Python</li>
-                            <li class="skills-content__container__list__item">OOP</li>
-                            <li class="skills-content__container__list__item">Dart</li>
-                            <li class="skills-content__container__list__item">Linux</li>
-                            <li class="skills-content__container__list__item">CNN Design</li>
-                            <li class="skills-content__container__list__item">Tensorflow</li>
-                            <li class="skills-content__container__list__item">Git</li>
-                            <li class="skills-content__container__list__item">SQL</li>
-                        </ul>
+                    <div class="skills">
+                        <div class="skill">
+                            <span>Python</span>
+                            <div class="slider" style="--value:90%"></div>
+                        </div>
+                        <div class="skill">
+                            <span>Dart</span>
+                            <div class="slider" style="--value:80%"></div>
+                        </div>
+                        <div class="skill">
+                            <span>SQL</span>
+                            <div class="slider" style="--value:75%"></div>
+                        </div>
+                        <div class="skill">
+                            <span>Tensorflow</span>
+                            <div class="slider" style="--value:70%"></div>
+                        </div>
+                        <div class="skill">
+                            <span>HTML</span>
+                            <div class="slider" style="--value:65%"></div>
+                        </div>
+                        <div class="skill">
+                            <span>JavaScript</span>
+                            <div class="slider" style="--value:60%"></div>
+                        </div>
                     </div>
-                </div>
-            </section>
-
-            <section id="education">
-                <h2>Education</h2>
-                <div class="education-content">
-                    <h3>BSc Computer Science</h3>
-                    <h4>University Of Portsmouth</h4>
-                    <p class="education-date">2020 - 2024</p>
-                    <ul>
-                        <li>Achieved an average of 83% in first year and 69% in second year.</li>
-                        <li>Modules include:
-                            <ul>
-                                <li>Programming (97%)</li>
-                                <li>Artificial Intelligence (82%)</li>
-                                <li>Database Systems Development (70%)</li>
-                            </ul>
-                        </li>
-                        <li>Demonstrated a strong aptitude for learning new languages and applying them quickly.</li>
-                    </ul>
                 </div>
             </section>
 
@@ -92,11 +83,13 @@
 
             <section id="contact">
                 <h2>Contact</h2>
-                <p>Email: <a href="mailto:tomandrewgordon@gmail.com">tomandrewgordon@gmail.com</a></p>
-                <p><a href="https://www.linkedin.com/in/thomasagordon/">LinkedIn</a></p>
-                <p><a href="https://github.com/thomasgordon">GitHub</a></p>
+                <div class="contact-links">
+                    <a href="https://github.com/thomasgordon">GitHub</a>
+                    <a href="https://www.linkedin.com/in/thomasagordon/">LinkedIn</a>
+                    <a href="mailto:tom@tatyou.app">Email</a>
+                </div>
             </section>
-        </div>
+        </main>
     </div>
     <script src="script.js"></script>
 </body>
