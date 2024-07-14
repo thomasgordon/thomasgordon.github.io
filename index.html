@@ -7,96 +7,162 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="background-grid">
-        <div class="spline-viewer">
-            <script type="module" src="https://unpkg.com/@splinetool/viewer@1.8.9/build/spline-viewer.js"></script>
-            <spline-viewer url="https://prod.spline.design/gdcJwq86KBTSgN3A/scene.splinecode"></spline-viewer>
+    <header>
+        <div class="header-content">
+            <h1>[ Thomas <span class="name">Gordon</span> ]</h1>
+            <h2>I am a <span class="profession"></span></h2>
+            <p>A recent computer science graduate looking for a new challenge in a software engineering role.</p>
         </div>
-    </div>
-    <div class="scroll-container">
-        <header>
-            <div class="spacer-title"></div>
-            <div class="header-content">
-                <div class="name-title dynamic-width-element glass-effect">
-                    <h1><span class="first-name">Thomas</span> <strong>Gordon</strong></h1>
-                    <p>[ software engineer ]</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="about">
+            <h2>About Me</h2>
+            <p>From a young age, I was fascinated by the world of technology and coding. I have always been passionate about exploring new ideas and achieving things through programming. This drive led me to pursue a degree in computer science at the University of Portsmouth, where I honed my skills in various programming languages and technologies, alongside gaining vital industry experience during a placement year at Hewlett Packard Enterprise.</p>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="date">2020 - 2024</span>
+                    <h3>University Of Portsmouth | BSc Computer Science</h3>
+                    <ul>
+                        <li>Achieved an average of 83% in the first year and 69% in the second year.</li>
+                        <li>Modules include:
+                            <ul>
+                                <li>Programming (97%)</li>
+                                <li>Artificial Intelligence (82%)</li>
+                                <li>Database Systems Development (70%)</li>
+                            </ul>
+                        </li>
+                        <li>Demonstrated a strong aptitude for learning new languages and applying them quickly.</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <span class="date">2022 - 2023</span>
+                    <h3>Software Engineering Intern | Hewlett Packard Enterprise</h3>
+                    <ul>
+                        <li>Led an individual project within my first month, learning and employing C++ alongside SQL to deliver solutions with global impact.</li>
+                        <li>Collaborated within a team to optimize existing technology.</li>
+                        <li>Transitioned to a cross-continental team spanning the UK, India, and the USA.</li>
+                        <li>Contributed to the design and implementation of an upcoming product using GoLang and Kubernetes.</li>
+                        <li>Gained insights into large-scale company operations while enhancing interpersonal skills through diverse collaborations, and experienced working in an Agile environment.</li>
+                    </ul>
                 </div>
             </div>
-        </header>
+        </section>
 
-        <main>
-            <section id="experience">
-                <h2>Experience</h2>
-                <div class="experience-container">
-                    <div class="timeline glass-effect">
-                        <div class="timeline-item">
-                            <div class="date">2023-2024</div>
-                            <div class="institution">University Of Portsmouth</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="date">2022-2023</div>
-                            <div class="institution">Hewlett Packard Enterprise</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="date">2020-2022</div>
-                            <div class="institution">University Of Portsmouth</div>
-                        </div>
-                    </div>
-                    <div class="skills glass-effect">
-                        <div class="skill">
-                            <span>Python</span>
-                            <div class="slider" style="--value:90%"></div>
-                        </div>
-                        <div class="skill">
-                            <span>Dart</span>
-                            <div class="slider" style="--value:80%"></div>
-                        </div>
-                        <div class="skill">
-                            <span>SQL</span>
-                            <div class="slider" style="--value:75%"></div>
-                        </div>
-                        <div class="skill">
-                            <span>Tensorflow</span>
-                            <div class="slider" style="--value:70%"></div>
-                        </div>
-                        <div class="skill">
-                            <span>HTML</span>
-                            <div class="slider" style="--value:65%"></div>
-                        </div>
-                        <div class="skill">
-                            <span>JavaScript</span>
-                            <div class="slider" style="--value:60%"></div>
-                        </div>
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card" id="link">
+                    <h3>TATYOU</h3>
+                    <a href="https://tatyou.app">An application I am currently developing in Dart that allows users to find new tattoo artists, preview tattoo designs in real-time using AR, and book appointments with tattoo artists.</a>
+                </div>
+                <div class="project-card">
+                    <h3>SPS</h3>
+                    <p>A web application allowing users to host a virtual 'party' via the Spotify API (developed prior to Spotify implementing this feature). Written using JavaScript, SQL, and PHP (alongside creating a RESTful API) to allow users to add songs to a queue, vote to skip songs, and view the current queue, alongside seeing what was currently playing.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-rating">
+                <div class="skill">
+                    <span>OOP</span>
+                    <div class="rating-bar">
+                        <div class="fill" style="width: 95%;"></div>
                     </div>
                 </div>
-            </section>
-
-            <section id="projects">
-                <h2>Projects</h2>
-                <div class="projects-grid">
-                    <a href="https://tatyou.app" class="project-card-link">
-                        <div class="project-card glass-effect">
-                            <h3>TATYOU</h3>
-                            <p>An application I am currently developing in Dart that allows users to find new tattoo artists, preview tattoo designs in real-time using AR and book appointments with tattoo artists.</p>
-                        </div>
-                    </a>
-                    <div class="project-card glass-effect">
-                        <h3>SPS</h3>
-                        <p>A web application allowing users to host a virtual 'party' via the Spotify API (developed prior to Spotify implementing this feature). Written using JavaScript, SQL and PHP (alongside creating a RESTful API) to allow users to add songs to a queue, vote to skip songs and view the current queue, alongside seeing what was currently playing.</p>
+                <div class="skill">
+                    <span>Python</span>
+                    <div class="rating-bar">
+                        <div class="fill" style="width: 90%;"></div>
                     </div>
                 </div>
-            </section>
-
-            <section id="contact">
-                <h2>Contact</h2>
-                <div class="contact-links glass-effect">
-                    <a href="https://github.com/thomasgordon">GitHub</a>
-                    <a href="https://www.linkedin.com/in/thomasagordon/">LinkedIn</a>
-                    <a href="mailto:tom@tatyou.app">Email</a>
+                <div class="skill">
+                    <span>Linux</span>
+                    <div class="rating-bar">
+                        <div class="fill" style="width: 90%;"></div>
+                    </div>
                 </div>
-            </section>
-        </main>
-    </div>
+                <div class="skill">
+                    <span>Git</span>
+                    <div class="rating-bar">
+                        <div class="fill" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span>TensorFlow</span>
+                    <div class="rating-bar">
+                        <div class="fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span>Dart</span>
+                    <div class="rating-bar">
+                        <div class="fill" style="width: 70%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span>SQL</span>
+                    <div class="rating-bar">
+                        <div class="fill" style="width: 70%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span>HTML</span>
+                    <div class="rating-bar">
+                        <div class="fill" style="width: 70%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span>JavaScript</span>
+                    <div class="rating-bar">
+                        <div class="fill" style="width: 50%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Experience With</h3>
+                    <ul>
+                        <li>GoLang</li>
+                        <li>C++</li>
+                        <li>Java</li>
+                        <li>HTML</li>
+                        <li>Haskell</li>
+                        <li>JavaScript</li>
+                        <li>PHP</li>
+                        <li>Kubernetes</li>
+                        <li>UI / UX Design</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-links">
+                <a href="https://github.com/thomasgordon">GitHub</a>
+                <a href="https://www.linkedin.com/in/thomasagordon/">LinkedIn</a>
+                <a href="mailto:tomandrewgordon@gmail.com">Email</a>
+            </div>
+        </section>
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>

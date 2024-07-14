@@ -1,48 +1,80 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const scrollContainer = document.querySelector('.scroll-container');
+const professions = ["recent graduate.", "software engineer.", "backend developer.", "frontend developer."];
+let professionIndex = 0;
+let charIndex = 0;
+let currentProfession = professions[professionIndex];
+const professionElement = document.querySelector('.profession');
+let isScrolling = false;
 
-    updateElementWidth();
-
-    function updateElementWidth() {
-        const element = document.querySelector('.dynamic-width-element');
-        if (element) {
-            const textWidth = element.scrollWidth;
-            element.style.width = `${textWidth}px`;
-        }
+function typeProfession() {
+    if (charIndex < currentProfession.length) {
+        professionElement.textContent += currentProfession.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeProfession, 125);
+    } else {
+        setTimeout(deleteProfession, 1000);
     }
+}
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
+function deleteProfession() {
+    if (charIndex > 0) {
+        professionElement.textContent = currentProfession.substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(deleteProfession, 50);
+    } else {
+        professionIndex = (professionIndex + 1) % professions.length;
+        currentProfession = professions[professionIndex];
+        setTimeout(typeProfession, 300);
+    }
+}
 
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
-
-    document.querySelectorAll('.project-card-link').forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.querySelector('.project-card').style.transform = 'translateY(-5px)';
-        });
-        card.addEventListener('mouseleave', function() {
-            this.querySelector('.project-card').style.transform = 'translateY(0)';
-        });
-    });
-
-    let lastScrollTop = 0;
-    scrollContainer.addEventListener('scroll', function() {
-        const st = scrollContainer.scrollTop;
-        if (st > lastScrollTop) {
-            document.body.style.paddingTop = `-${st}px`;
-        } else {
-            document.body.style.paddingTop = `0px`;
-        }
-        lastScrollTop = st <= 0 ? 0 : st;
-    }, false);
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(typeProfession, 500);
 });
 
-window.addEventListener('resize', updateElementWidth);
+let lastScrollTop = 0;
+
+function scrollHandler() {
+    if (isScrolling) return;
+
+    const scrollPosition = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const scrollDirection = scrollPosition > lastScrollTop ? 'down' : 'up';
+
+    if (scrollPosition < windowHeight) {
+        isScrolling = true;
+        if (scrollPosition > 0 && scrollDirection === 'down') {
+            window.scrollTo({
+                top: windowHeight,
+                behavior: 'smooth'
+            });
+        } else if (scrollDirection === 'up' && scrollPosition < windowHeight * 0.90) {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    } else {
+        isScrolling = false;
+    }
+
+    lastScrollTop = scrollPosition <= 0 ? 0 : scrollPosition;
+}
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > window.innerHeight / 2) {
+        document.body.classList.add('scrolled');
+    } else {
+        document.body.classList.remove('scrolled');
+    }
+});
+
+window.addEventListener('scroll', scrollHandler);
+window.addEventListener('wheel', (e) => {
+    if (isScrolling) {
+        e.preventDefault();
+    }
+});
+
+window.addEventListener('scrollend', () => {
+    isScrolling = false;
+});
